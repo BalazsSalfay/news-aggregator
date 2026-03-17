@@ -10,6 +10,16 @@ const pool = new Pool({
 
 const START_DATE = new Date('2026-03-10T00:00:00Z')
 
+// RSSHub instance URL (internal Sevalla hostname)
+const RSSHUB = process.env.RSSHUB_URL || ''
+const RSSHUB_KEY = process.env.RSSHUB_ACCESS_KEY || ''
+
+function rss(path) {
+  if (!RSSHUB) return null
+  const sep = path.includes('?') ? '&' : '?'
+  return `${RSSHUB}${path}${sep}key=${RSSHUB_KEY}`
+}
+
 // AI Coding Agents — focused on agentic coding tools, IDE AI, code assistants
 const AI_FEEDS = [
   {
@@ -47,6 +57,19 @@ const AI_FEEDS = [
     url: 'https://bsky.app/profile/simonwillison.net/rss',
     name: 'Bluesky / Simon Willison',
   },
+  // X/Twitter via RSSHub — only included if RSSHUB_URL is configured
+  ...(rss('/twitter/search/cursor%20OR%20copilot%20OR%20%22claude%20code%22%20OR%20devin%20OR%20aider%20OR%20%22AI%20coding%22') ? [{
+    url: rss('/twitter/search/cursor%20OR%20copilot%20OR%20%22claude%20code%22%20OR%20devin%20OR%20aider%20OR%20%22AI%20coding%22'),
+    name: 'X / AI Coding',
+  }] : []),
+  ...(rss('/twitter/user/simonw') ? [{
+    url: rss('/twitter/user/simonw'),
+    name: 'X / @simonw',
+  }] : []),
+  ...(rss('/twitter/user/alexalbert__') ? [{
+    url: rss('/twitter/user/alexalbert__'),
+    name: 'X / @alexalbert (Anthropic)',
+  }] : []),
 ]
 
 // PaaS / Platform Engineering — deployment platforms, cloud infrastructure, developer experience
@@ -91,6 +114,15 @@ const PAAS_FEEDS = [
     url: 'https://bsky.app/profile/kelseyhightower.com/rss',
     name: 'Bluesky / Kelsey Hightower',
   },
+  // X/Twitter via RSSHub — only included if RSSHUB_URL is configured
+  ...(rss('/twitter/search/railway%20OR%20%22fly.io%22%20OR%20heroku%20OR%20%22platform%20engineering%22%20OR%20%22PaaS%22') ? [{
+    url: rss('/twitter/search/railway%20OR%20%22fly.io%22%20OR%20heroku%20OR%20%22platform%20engineering%22%20OR%20%22PaaS%22'),
+    name: 'X / PaaS',
+  }] : []),
+  ...(rss('/twitter/user/kelseyhightower') ? [{
+    url: rss('/twitter/user/kelseyhightower'),
+    name: 'X / @kelseyhightower',
+  }] : []),
 ]
 
 function stripHtml(html) {
