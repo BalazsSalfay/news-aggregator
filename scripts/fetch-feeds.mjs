@@ -57,18 +57,26 @@ const AI_FEEDS = [
     url: 'https://bsky.app/profile/simonwillison.net/rss',
     name: 'Bluesky / Simon Willison',
   },
-  // X/Twitter via RSSHub — only included if RSSHUB_URL is configured
-  ...(rss('/twitter/search/cursor%20OR%20copilot%20OR%20%22claude%20code%22%20OR%20devin%20OR%20aider%20OR%20%22AI%20coding%22') ? [{
-    url: rss('/twitter/search/cursor%20OR%20copilot%20OR%20%22claude%20code%22%20OR%20devin%20OR%20aider%20OR%20%22AI%20coding%22'),
-    name: 'X / AI Coding',
-  }] : []),
+  // X/Twitter via RSSHub — user timelines only (search requires paid API)
   ...(rss('/twitter/user/simonw') ? [{
     url: rss('/twitter/user/simonw'),
     name: 'X / @simonw',
   }] : []),
   ...(rss('/twitter/user/alexalbert__') ? [{
     url: rss('/twitter/user/alexalbert__'),
-    name: 'X / @alexalbert (Anthropic)',
+    name: 'X / @alexalbert',
+  }] : []),
+  ...(rss('/twitter/user/karpathy') ? [{
+    url: rss('/twitter/user/karpathy'),
+    name: 'X / @karpathy',
+  }] : []),
+  ...(rss('/twitter/user/sama') ? [{
+    url: rss('/twitter/user/sama'),
+    name: 'X / @sama',
+  }] : []),
+  ...(rss('/twitter/user/cursor_ai') ? [{
+    url: rss('/twitter/user/cursor_ai'),
+    name: 'X / @cursor_ai',
   }] : []),
 ]
 
@@ -101,27 +109,35 @@ const PAAS_FEEDS = [
   },
   {
     // TechCrunch Cloud — funding rounds, product launches in cloud/PaaS
-    url: 'https://techcrunch.com/category/cloud/feed/',
+    url: 'https://techcrunch.com/tag/cloud/feed/',
     name: 'TechCrunch',
   },
   {
-    // InfoQ DevOps — in-depth articles on deployment, containers, platform eng
-    url: 'https://feed.infoq.com/devops/',
-    name: 'InfoQ DevOps',
+    // InfoQ Cloud — in-depth articles on deployment, containers, platform eng
+    url: 'https://www.infoq.com/cloud-computing/rss/',
+    name: 'InfoQ Cloud',
   },
   {
     // Bluesky: Kelsey Hightower — Kubernetes/cloud legend, posts PaaS takes
     url: 'https://bsky.app/profile/kelseyhightower.com/rss',
     name: 'Bluesky / Kelsey Hightower',
   },
-  // X/Twitter via RSSHub — only included if RSSHUB_URL is configured
-  ...(rss('/twitter/search/railway%20OR%20%22fly.io%22%20OR%20heroku%20OR%20%22platform%20engineering%22%20OR%20%22PaaS%22') ? [{
-    url: rss('/twitter/search/railway%20OR%20%22fly.io%22%20OR%20heroku%20OR%20%22platform%20engineering%22%20OR%20%22PaaS%22'),
-    name: 'X / PaaS',
-  }] : []),
+  // X/Twitter via RSSHub — user timelines only
   ...(rss('/twitter/user/kelseyhightower') ? [{
     url: rss('/twitter/user/kelseyhightower'),
     name: 'X / @kelseyhightower',
+  }] : []),
+  ...(rss('/twitter/user/dhh') ? [{
+    url: rss('/twitter/user/dhh'),
+    name: 'X / @dhh',
+  }] : []),
+  ...(rss('/twitter/user/mjackson') ? [{
+    url: rss('/twitter/user/mjackson'),
+    name: 'X / @mjackson',
+  }] : []),
+  ...(rss('/twitter/user/rauchg') ? [{
+    url: rss('/twitter/user/rauchg'),
+    name: 'X / @rauchg (Vercel)',
   }] : []),
 ]
 
