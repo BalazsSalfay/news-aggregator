@@ -113,9 +113,9 @@ const PAAS_FEEDS = [
     name: 'TechCrunch',
   },
   {
-    // InfoQ Cloud — in-depth articles on deployment, containers, platform eng
-    url: 'https://www.infoq.com/cloud-computing/rss/',
-    name: 'InfoQ Cloud',
+    // Last Week in AWS — weekly roundup of cloud/PaaS news
+    url: 'https://www.lastweekinaws.com/feed/',
+    name: 'Last Week in AWS',
   },
   {
     // Bluesky: Kelsey Hightower — Kubernetes/cloud legend, posts PaaS takes
