@@ -10,45 +10,86 @@ const pool = new Pool({
 
 const START_DATE = new Date('2026-03-10T00:00:00Z')
 
+// AI Coding Agents — focused on agentic coding tools, IDE AI, code assistants
 const AI_FEEDS = [
   {
-    url: 'https://hnrss.org/newest?q=ChatGPT+OR+GPT+OR+LLM+OR+%22artificial+intelligence%22+OR+%22machine+learning%22+OR+Claude+OR+Gemini+OR+%22AI%22&count=50',
+    // HN: tightly focused on AI coding agents and tools
+    url: 'https://hnrss.org/newest?q=cursor+OR+copilot+OR+%22code+agent%22+OR+%22coding+agent%22+OR+devin+OR+aider+OR+%22claude+code%22+OR+windsurf+OR+codeium+OR+%22AI+coding%22+OR+%22agentic+coding%22+OR+%22code+completion%22+OR+%22AI+developer%22+OR+%22AI+engineer%22&count=50',
     name: 'Hacker News',
   },
   {
-    url: 'https://techcrunch.com/category/artificial-intelligence/feed/',
-    name: 'TechCrunch',
+    // GitHub Blog — official source for Copilot, AI features, developer tools
+    url: 'https://github.blog/feed/',
+    name: 'GitHub Blog',
   },
   {
-    url: 'https://venturebeat.com/category/ai/feed/',
-    name: 'VentureBeat',
+    // Simon Willison — the best independent voice on LLMs and AI coding tools, cross-posts X threads
+    url: 'https://simonwillison.net/atom/everything/',
+    name: 'Simon Willison',
   },
   {
+    // The Verge AI — covers Copilot, Cursor, Claude, coding tools launches
     url: 'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml',
     name: 'The Verge',
   },
   {
-    url: 'https://feeds.feedburner.com/AITopIO',
-    name: 'AI Top I/O',
+    // VentureBeat AI — startup and product launches in AI dev tools
+    url: 'https://venturebeat.com/category/ai/feed/',
+    name: 'VentureBeat',
+  },
+  {
+    // dev.to AI Agents tag — practitioner posts, tutorials, tool comparisons
+    url: 'https://dev.to/feed/tag/aiagents',
+    name: 'dev.to',
+  },
+  {
+    // Bluesky: Simon Willison — posts X-first AI coding news here too
+    url: 'https://bsky.app/profile/simonwillison.net/rss',
+    name: 'Bluesky / Simon Willison',
   },
 ]
 
+// PaaS / Platform Engineering — deployment platforms, cloud infrastructure, developer experience
 const PAAS_FEEDS = [
   {
-    url: 'https://hnrss.org/newest?q=PaaS+OR+Heroku+OR+Vercel+OR+Netlify+OR+Railway+OR+Render+OR+%22platform+as+a+service%22+OR+%22cloud+native%22+OR+Kubernetes+OR+%22cloud+platform%22&count=50',
+    // HN: PaaS-focused, explicitly excludes broad AI terms
+    url: 'https://hnrss.org/newest?q=railway+OR+%22fly.io%22+OR+heroku+OR+render+OR+%22cloud+run%22+OR+%22platform+engineering%22+OR+%22app+platform%22+OR+%22serverless%22+OR+%22developer+platform%22+OR+%22twelve-factor%22+OR+%22PaaS%22+OR+%22Coolify%22+OR+%22Dokku%22+OR+%22Kamal%22&count=50',
     name: 'Hacker News',
   },
   {
-    url: 'https://techcrunch.com/category/cloud/feed/',
-    name: 'TechCrunch',
-  },
-  {
+    // The New Stack — cloud native, Kubernetes, platform engineering
     url: 'https://thenewstack.io/feed/',
     name: 'The New Stack',
   },
   {
-    url: 'https://feeds.feedburner.com/infoq/cloud',
-    name: 'InfoQ Cloud',
+    // DevOps.com — deployment pipelines, CI/CD, platform ops
+    url: 'https://devops.com/feed/',
+    name: 'DevOps.com',
+  },
+  {
+    // Kubernetes official blog
+    url: 'https://kubernetes.io/feed.xml',
+    name: 'Kubernetes Blog',
+  },
+  {
+    // Fly.io Blog — opinionated PaaS engineering posts
+    url: 'https://fly.io/blog/feed.xml',
+    name: 'Fly.io Blog',
+  },
+  {
+    // TechCrunch Cloud — funding rounds, product launches in cloud/PaaS
+    url: 'https://techcrunch.com/category/cloud/feed/',
+    name: 'TechCrunch',
+  },
+  {
+    // InfoQ DevOps — in-depth articles on deployment, containers, platform eng
+    url: 'https://feed.infoq.com/devops/',
+    name: 'InfoQ DevOps',
+  },
+  {
+    // Bluesky: Kelsey Hightower — Kubernetes/cloud legend, posts PaaS takes
+    url: 'https://bsky.app/profile/kelseyhightower.com/rss',
+    name: 'Bluesky / Kelsey Hightower',
   },
 ]
 

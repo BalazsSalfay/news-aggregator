@@ -40,7 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="bg-gray-900 text-gray-400 text-center py-5 text-sm">
           <p>Updated daily at 8:00 AM UTC</p>
           <p className="mt-1 text-gray-600 text-xs">
-            Sources: Hacker News · TechCrunch · VentureBeat · The Verge · The New Stack
+            AI: Hacker News · GitHub Blog · Simon Willison · The Verge · VentureBeat · Bluesky
+            &nbsp;·&nbsp;
+            PaaS: Hacker News · The New Stack · DevOps.com · Fly.io · Kubernetes · TechCrunch · Bluesky
           </p>
         </footer>
       </body>
